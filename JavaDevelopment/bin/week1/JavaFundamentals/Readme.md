@@ -78,6 +78,7 @@ The String class in Java provides a number of useful methods:
 - replace("a", "b")
 - toUpperCase()
 - toLowerCase()
+  
   Strings are immutable, which means once we initialize them, their value cannot be
   changed. All methods that modify a string (like toUpperCase) return a new string
   object. The original string remains unaffected.
@@ -253,6 +254,7 @@ We use logical operators to combine multiple boolean values/expressions.
 - x && y (AND): if both x and y are true, the result will be true.
 - x || y (OR): if either x or y or both are true, the result will be true.
 - !x (NOT): reverses a boolean value. True becomes false.
+
 ```bash
 bool hasHighIncome = true;
 bool hasGoodCredit = false;
@@ -276,6 +278,7 @@ else
 ```
 
 ### The Ternary Operator
+
 ```bash
 String className = (income > 100_000) ? “First” : “Economy”;
 //This is a shorthand to write the following code:
@@ -289,6 +292,7 @@ String className;
 ### Switch Statements
 
 We use switch statements to execute different parts of the code depending on the value of a variable.
+
 ```bash
 switch (x) {
  case 1:
@@ -301,11 +305,13 @@ switch (x) {
       …
  }
 ```
+
 After each case clause, we use the break statements to jump out of the switch block.
 
 ### For Loops
 
 For loops are useful when we know ahead of time how many times we want to repeat something. We declare a loop variable (or loop counter) and in each iteration we increment it until we reach the number of times we want to execute some code.
+
 ```bash
 for (int i = 0; i < 5; i++)
     statement
@@ -314,6 +320,7 @@ for (int i = 0; i < 5; i++)
 ### While Loops
 
 While loops are useful when we don’t know ahead of time how many times we want to repeat something. This may be dependent on the values at run-time (eg what the user enters).
+
 ```bash
 while (someCondition) {
 …
@@ -321,20 +328,23 @@ if (someCondition)
 break;
 }
 ```
+
 We use the break statement to jump out of a loop.
 
-### Do..While Loops 
+### Do..While Loops
 
-Do..While loops are very similar to while loops but they executed at least once. In contrast, a while loop may never get executed if the condition is initially false. 
+Do..While loops are very similar to while loops but they executed at least once. In contrast, a while loop may never get executed if the condition is initially false.
+
 ```bash
 do {
     …
  } while (someCondition);
 ```
 
-### For-each Loops 
+### For-each Loops
 
-For-each loops are useful for iterating over an array or a collection. 
+For-each loops are useful for iterating over an array or a collection.
+
 ```bash
 int[] numbers = {1, 2, 3, 4};
  for (int number : numbers)

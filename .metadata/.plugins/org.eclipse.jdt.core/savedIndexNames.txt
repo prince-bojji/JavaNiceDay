@@ -1,4 +1,0 @@
-INDEX VERSION 1.131+C:\Users\THINKPAD L490\OneDrive - Polytechnic University of the Philippines\Documents\Java\JavaNiceDay\.metadata\.plugins\org.eclipse.jdt.core
-3150816482.index
-1865797976.index
-255984038.index

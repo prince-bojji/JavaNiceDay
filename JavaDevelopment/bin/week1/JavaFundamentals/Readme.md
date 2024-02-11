@@ -132,9 +132,9 @@ The Array class provides a few useful methods for working with arrays.
  matrix[0][0] = 10;
  // Shortcut
  int[2][3] matrix = {
-                   };
                        { 1, 2, 3 },
                        { 4, 5, 6 }
+                   };
 ```
 
 ### Constants
@@ -338,5 +338,5 @@ For-each loops are useful for iterating over an array or a collection.
 ```bash
 int[] numbers = {1, 2, 3, 4};
  for (int number : numbers)
-    …
+      …
 ```

@@ -22,7 +22,7 @@ public class MortgageReport {
 	}
 
 	public void printPaymentSchedule() {
-		System.out.println();
+	    System.out.println();
 	    System.out.println("PAYMENT SCHEDULE");
 	    System.out.println("----------------");
 	    

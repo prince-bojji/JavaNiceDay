@@ -340,3 +340,5 @@ int[] numbers = {1, 2, 3, 4};
  for (int number : numbers)
       …
 ```
+
+[Additional Slides](https://docs.google.com/presentation/d/1IDLNCS15cKl9hpGdXZ4ATtC4miGbieP50ag2HPvCwz8/edit#slide=id.gec44576194_0_5)

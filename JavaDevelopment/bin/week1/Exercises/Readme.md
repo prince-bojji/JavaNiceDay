@@ -1,4 +1,4 @@
-# Exercise
+# Exercises
 
 You may push your work to the respective exercises folder.
 

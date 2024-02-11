@@ -64,18 +64,18 @@ Date now = new Date();
 Strings are reference types but we don’t need to use the new operator to allocate memory to them. We can declare string variables like the primitives since we use them a lot.
 
 ```bash
-String name = “Mosh”;
+String name = "Mosh";
 ```
 
 ### Useful String Methods
 
 The String class in Java provides a number of useful methods:
 
-- startsWith(“a”)
-- endsWith(“a”)
+- startsWith("a")
+- endsWith("a")
 - length()
-- indexOf(“a”)
-- replace(“a”, “b”)
+- indexOf("a")
+- replace("a", "b")
 - toUpperCase()
 - toLowerCase()
   Strings are immutable, which means once we initialize them, their value cannot be
@@ -89,7 +89,7 @@ prefix it with a backslash. This is called escaping.
 Common escape sequences:
 
 - \\
-- \”
+- \"
 - \n (new line)
 - \t (tab)
 
@@ -133,7 +133,6 @@ The Array class provides a few useful methods for working with arrays.
  // Shortcut
  int[2][3] matrix = {
                    };
- Constants
                        { 1, 2, 3 },
                        { 4, 5, 6 }
 ```
@@ -156,7 +155,7 @@ int x = 10 - 3;
 int x = 10 * 3;
 int x = 10 / 3;
 // returns an int
-float x = (float)10 / (float)3;  // returns a float 
+float x = (float)10 / (float)3;  // returns a float
 int x = 10 % 3;
 // modulus (remainder of division)
 ```
@@ -165,7 +164,7 @@ int x = 10 % 3;
 
 ```bash
 int x = 1;
- x++;
+x++;
 x--;
 // Equivalent to x = x + 1
 // Equivalent to x = x - 1

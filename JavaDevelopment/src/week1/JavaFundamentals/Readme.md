@@ -78,6 +78,7 @@ The String class in Java provides a number of useful methods:
 - replace("a", "b")
 - toUpperCase()
 - toLowerCase()
+  
   Strings are immutable, which means once we initialize them, their value cannot be
   changed. All methods that modify a string (like toUpperCase) return a new string
   object. The original string remains unaffected.

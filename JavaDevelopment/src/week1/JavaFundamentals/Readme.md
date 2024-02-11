@@ -64,7 +64,7 @@ Date now = new Date();
 Strings are reference types but we don’t need to use the new operator to allocate memory to them. We can declare string variables like the primitives since we use them a lot.
 
 ```bash
-String name = "Mosh";
+String name = "Jehan";
 ```
 
 ### Useful String Methods
@@ -217,9 +217,9 @@ To convert a string to a number, we use one of the following methods:
 
 ```bash
 NumberFormat currency = NumberFormat.getCurrencyInstance();
-String result = currency.format(“123456”); // $123,456
+String result = currency.format("123456"); // $123,456
 NumberFormat percent = NumberFormat.getPercentInstance();
-String result = percent(“0.04”); // 4%
+String result = percent("0.04"); // 4%
 ```
 
 ### Reading Input

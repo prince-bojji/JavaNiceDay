@@ -61,3 +61,5 @@ ___Attributes___ these are the global variables declared inside the class of our
 2. [Inheritance](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/OOP/inheritance)
 3. [Polymorphism](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/OOP/polymorphism)
 4. [Abstraction](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/OOP/abstraction)
+
+After completing this lesson, you may proceed to the exercises folder, [Exercises](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/Exercises)

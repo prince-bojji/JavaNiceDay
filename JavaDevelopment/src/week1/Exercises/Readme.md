@@ -19,5 +19,5 @@ Here’s a breakdown of each of the variables:
 
 - M = Total monthly payment
 - P = The total amount of your loan
-- I = Your interest rate, as a annual percentage
-- N = The total amount of years in your timeline for paying off your mortgage
+- I = Your interest rate, as a monthly percentage
+- N = The total amount of months in your timeline for paying off your mortgage

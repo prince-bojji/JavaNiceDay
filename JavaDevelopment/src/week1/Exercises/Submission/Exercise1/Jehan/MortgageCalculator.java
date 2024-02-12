@@ -15,7 +15,7 @@ public class MortgageCalculator {
 	}
 
 	public double calculateBalance(short numberOfPaymentsMade) {
-		float monthlyInterest = getMonthlyInterest();
+	    float monthlyInterest = getMonthlyInterest();
 	    short numberOfPayments = getNumberOfPayments();
 	    
 	    double balance = principal
@@ -26,7 +26,7 @@ public class MortgageCalculator {
 	}
 
 	public double calculateMortgage() {
-		float monthlyInterest = getMonthlyInterest();
+	    float monthlyInterest = getMonthlyInterest();
 	    short numberOfPayments = getNumberOfPayments();
 	
 		double mortgage = principal

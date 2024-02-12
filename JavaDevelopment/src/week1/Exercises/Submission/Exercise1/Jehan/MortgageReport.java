@@ -28,6 +28,6 @@ public class MortgageReport {
 	    
 	    for(double balance: calculator.getRemainingBalances())
 	    	 System.out.println(currency.format(balance));
-	    }
-
+	}
+	
 }

@@ -1,32 +1,19 @@
 
 # Welcome to the journey of Java development.
 
-In this course, we will learn the skills needed to become a Java developer.
-
-## Overview
-
-- Core Java
-- Spring Framework
-- Spring MVC
-- Spring Boot
-- Hibernate
-- Database Management 
-- Java Testing (JUnit and Mockito)
-- Git
-- Build Systems (Maven and Gradle)
-- Agile Methodologies
+In this journey, we will learn the skills needed to become a Java developer.
 
 ### Prerequisites
 
 Before you begin, ensure you have installed the latest version of:
 
 - JDK (Java Development Kit)
-- IDE (IntelliJ IDEA or Eclipse)
+- IDE (IntelliJ IDEA,Eclipse, or VS Code)
 - Git for version control management
 
 ### Contributing
 
-How to Take This Course.
+How to join in this journey.
 
 - Clone/Fork the Repository : 
     ```bash

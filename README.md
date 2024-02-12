@@ -8,7 +8,7 @@ In this journey, we will learn the skills needed to become a Java developer.
 Before you begin, ensure you have installed the latest version of:
 
 - JDK (Java Development Kit)
-- IDE (IntelliJ IDEA,Eclipse, or VS Code)
+- IDE (IntelliJ IDEA, Eclipse, or VS Code)
 - Git for version control management
 
 ### Contributing

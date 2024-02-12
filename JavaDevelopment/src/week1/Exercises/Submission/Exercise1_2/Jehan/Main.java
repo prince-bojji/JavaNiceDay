@@ -1,4 +1,4 @@
-package week1.Exercises.Submission.Exercise1.Jehan;
+package week1.Exercises.Submission.Exercise1_2.Jehan;
 
 public class Main {
  	public static void main(String[] args) {

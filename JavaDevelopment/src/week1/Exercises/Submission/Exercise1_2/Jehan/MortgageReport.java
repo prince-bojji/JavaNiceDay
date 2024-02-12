@@ -1,4 +1,4 @@
-package week1.Exercises.Submission.Exercise1.Jehan;
+package week1.Exercises.Submission.Exercise1_2.Jehan;
 
 import java.text.NumberFormat;
 

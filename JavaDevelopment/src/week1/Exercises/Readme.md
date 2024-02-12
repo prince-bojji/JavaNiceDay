@@ -21,3 +21,7 @@ Here’s a breakdown of each of the variables:
 - P = The total amount of your loan
 - I = Your interest rate, as a monthly percentage
 - N = The total amount of months in your timeline for paying off your mortgage
+
+## Exercise 2
+
+Apply what you have learned in OOP lessons to enhance the second exercise, which is the mortgage calculator.

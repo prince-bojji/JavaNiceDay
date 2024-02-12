@@ -351,6 +351,4 @@ int[] numbers = {1, 2, 3, 4};
       …
 ```
 
-After completing this lesson, you may proceed to the exercises folder, week1 > Exercises
-
-[Additional Slides](https://docs.google.com/presentation/d/1IDLNCS15cKl9hpGdXZ4ATtC4miGbieP50ag2HPvCwz8/edit#slide=id.gec44576194_0_5)
+After completing this lesson, you may proceed to the exercises folder, [Exercises](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/Exercises)

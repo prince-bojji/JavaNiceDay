@@ -54,3 +54,10 @@ ___Class Instantiation___ the process of creating an instance of a class.
 
 ___Attributes___ these are the global variables declared inside the class of our object.
 
+[Object Class](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/OOP/objectsClass)
+
+### 4 Pillars of OOP
+1. [Encaptulation](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/OOP/encaptulation)
+2. [Inheritance](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/OOP/inheritance)
+3. [Polymorphism](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/OOP/polymorphism)
+4. [Abstraction](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/OOP/abstraction)

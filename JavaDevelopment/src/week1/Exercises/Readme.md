@@ -2,7 +2,7 @@
 
 You may push your work to the respective exercises folder, and you can create your own folder.
 
-## Exercise 1 Java Fundamentals
+## Exercise 1: Java Fundamentals
 
 ### Mortgage Calculator
 
@@ -22,7 +22,7 @@ Here’s a breakdown of each of the variables:
 - I = Your interest rate, as a monthly percentage
 - N = The total amount of months in your timeline for paying off your mortgage
 
-## Exercise 2 Object Oriented Programming
+## Exercise 2: Object Oriented Programming
 
 Apply what you have learned in OOP lessons to enhance the second exercise, which is the mortgage calculator.
 
@@ -37,9 +37,9 @@ Apply what you have learned in OOP lessons to enhance the second exercise, which
 3. Ensure type safety by using generics.
 4. Test your class with various data types such as Integer, String, and custom objects.
 
-## Exercise 4 Collections
+## Exercise 4: Collections
 
-## Add Two Numbers
+### Add Two Numbers
 
 You are given two **_non-empty_** linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
 

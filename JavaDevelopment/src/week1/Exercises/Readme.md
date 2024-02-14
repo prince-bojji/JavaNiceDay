@@ -26,7 +26,7 @@ Here’s a breakdown of each of the variables:
 
 Apply what you have learned in OOP lessons to enhance the second exercise, which is the mortgage calculator.
 
-### Exercise 3: Generics
+## Exercise 3: Generics
 
 **_Problem:_** Develop a generic class to manage a collection of different types of elements. Implement methods to add elements, remove elements by index, and retrieve elements by index.
 

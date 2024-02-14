@@ -11,3 +11,5 @@ The **_Collection APIs_** provide a set of interfaces and classes to represent g
 3. **_Map_** Key-value pairs where each key is associated with exactly one value. Examples: `HashMap`, `TreeMap`.
 
 [Sample Collections Implementation](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/Collections)
+
+After completing this lesson, you may proceed to the exercises folder, [Exercises](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/Exercises)

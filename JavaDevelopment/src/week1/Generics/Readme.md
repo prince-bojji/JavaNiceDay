@@ -16,3 +16,5 @@ class ClassName<T> {
 
 [Sample Generics Implementation](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/Generics)
 
+After completing this lesson, you may proceed to the exercises folder, [Exercises](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/Exercises)
+

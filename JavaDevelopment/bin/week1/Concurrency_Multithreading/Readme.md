@@ -11,3 +11,5 @@ ___Multi-threading___ allows programs to execute multiple tasks concurrently, en
 Java provides higher-level ___Concurrency APIs___ to simplify multi-threaded programming, such as `ExecutorService`, `Future`, etc.
 
 [Sample Concurrency Implementation](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/Concurrency_Multithreading/UsingExecutorService.java)
+
+After completing this lesson, you may proceed to the exercises folder, [Exercises](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/Exercises)

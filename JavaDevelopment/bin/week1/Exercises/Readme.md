@@ -32,8 +32,8 @@ Apply what you have learned in OOP lessons to enhance the second exercise, which
 
 ### Details:
 
-1. Create a generic class called CustomCollection<E> where E represents the type of elements to be stored.
-2. Implement methods void add(E element), void remove(int index), and E get(int index).
+1. Create a generic class called `CustomCollection<E>` where `E` represents the type of elements to be stored.
+2. Implement methods `void add(E element)`, `void remove(int index)`, and `E get(int index)`.
 3. Ensure type safety by using generics.
 4. Test your class with various data types such as Integer, String, and custom objects.
 
@@ -47,7 +47,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
 ### Example 1:
 
-![Exercise 3](./JavaDevelopment/src/week1/Exercises/images/exercise3.png)
+![Exercise 3](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/Exercises/images)
 
 **_Input:_** l1 = [2,4,3], l2 = [5,6,4]
 **_Output:_** [7,0,8]
@@ -71,7 +71,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
 ## Exercise 5: Concurrency APIs and Multi-threading
 
-___Problem:___ Develop a multi-threaded Java program that simulates a restaurant's kitchen with chefs preparing different dishes concurrently.
+**_Problem:_** Develop a multi-threaded Java program that simulates a restaurant's kitchen with chefs preparing different dishes concurrently.
 
 ### Details:
 

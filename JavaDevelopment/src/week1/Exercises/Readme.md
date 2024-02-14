@@ -47,7 +47,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
 ### Example 1:
 
-![Exercise 3](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/Exercises/images/exercise3.png)
+![Exercise 4](https://raw.githubusercontent.com/prince-bojji/JavaNiceDay/main/JavaDevelopment/src/week1/Exercises/images/exercise4.png)
 
 **_Input:_** l1 = [2,4,3], l2 = [5,6,4]
 **_Output:_** [7,0,8]

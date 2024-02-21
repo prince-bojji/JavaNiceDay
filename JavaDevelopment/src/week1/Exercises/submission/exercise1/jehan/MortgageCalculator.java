@@ -5,17 +5,17 @@ import java.text.DecimalFormat;
 
 public class MortgageCalculator {
     private int principal;
-	private float annualInterest;
-	private byte years;
+    private float annualInterest;
+    private byte years;
+	
+    private final static byte PERCENT = 100;
+    private final static byte MONTHS_IN_YEAR = 12;
 
-	private final static byte PERCENT = 100;
-	private final static byte MONTHS_IN_YEAR = 12;
-
-	public MortgageCalculator(int principal, float annualInterest, byte years) {
-		this.principal = principal;
-		this.annualInterest = annualInterest;
-		this.years = years;
-	}
+    public MortgageCalculator(int principal, float annualInterest, byte years) {
+	this.principal = principal;
+	this.annualInterest = annualInterest;
+	this.years = years;
+    }
 	
     //Driver
     public static void main(String[] args){
@@ -29,16 +29,16 @@ public class MortgageCalculator {
 
 	//Validate user input for a number between min and max values.
 	public static double readNumber(String prompt, double min, double max) {
-	Scanner s = new Scanner(System.in);
-		double value;
-	    while (true) {
-		System.out.print(prompt);
-		value = s.nextFloat();
-		if (value >= min && value <= max)
-		    break;
-		System.out.println("Enter a value between "+ min + " and " + max);
-	    }
-	    return value;
+	      Scanner s = new Scanner(System.in);
+			double value;
+		    while (true) {
+			System.out.print(prompt);
+			value = s.nextFloat();
+			if (value >= min && value <= max)
+			    break;
+			System.out.println("Enter a value between "+ min + " and " + max);
+		    }
+	      return value;
 	}
 
 	//Calculate the total monthly payment (mortgage).

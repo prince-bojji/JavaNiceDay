@@ -1,4 +1,4 @@
-package week1.OOP.encaptulation;
+package week1.OOP.encapsulation;
 
 //Class - act as the blueprint or template.
 public class Character_ {

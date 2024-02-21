@@ -17,7 +17,7 @@ public class MortgageCalculator {
 		this.years = years;
 	}
 	
-	//Driver
+    //Driver
     public static void main(String[] args){
         int principal = (int) readNumber("Principal: ", 1000, 1000000);
         float annualInterest = (float) readNumber("Annual Interest Rate: ", 1, 30);
@@ -28,15 +28,15 @@ public class MortgageCalculator {
     }
 
 	//Validate user input for a number between min and max values.
-    public static double readNumber(String prompt, double min, double max) {
-        Scanner s = new Scanner(System.in);
+	public static double readNumber(String prompt, double min, double max) {
+	Scanner s = new Scanner(System.in);
 		double value;
 	    while (true) {
-	        System.out.print(prompt);
-	        value = s.nextFloat();
-	        if (value >= min && value <= max)
-	            break;
-	        System.out.println("Enter a value between "+ min + " and " + max);
+		System.out.print(prompt);
+		value = s.nextFloat();
+		if (value >= min && value <= max)
+		    break;
+		System.out.println("Enter a value between "+ min + " and " + max);
 	    }
 	    return value;
 	}
@@ -47,8 +47,8 @@ public class MortgageCalculator {
 	    short numberOfPayments = getNumberOfPayments();
 	
 		double mortgage = principal
-	            * (monthlyInterest * Math.pow(1 + monthlyInterest, numberOfPayments))
-	            / (Math.pow(1 + monthlyInterest, numberOfPayments) - 1);
+		    * (monthlyInterest * Math.pow(1 + monthlyInterest, numberOfPayments))
+		    / (Math.pow(1 + monthlyInterest, numberOfPayments) - 1);
 		
 		return mortgage;
 	}
@@ -71,10 +71,10 @@ public class MortgageCalculator {
 	}
     
 	//Display result (mortgage)
-    public void printMortgage(){
+	public void printMortgage(){
 		DecimalFormat decimalFormat = new DecimalFormat("$#.##");
 		double mortgage = calculateMortgage();
 		String mortgageFormatted = decimalFormat.format(mortgage);
 		System.out.println("MORTGAGE: " + mortgageFormatted);
-    }
+	}
 }

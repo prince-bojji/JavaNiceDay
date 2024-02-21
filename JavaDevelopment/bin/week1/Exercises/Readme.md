@@ -10,7 +10,7 @@ You may push your work to the respective exercises folder, and you can create yo
 Principal (1k - 1m): 100000
 Annual Interest Rate (1 - 30): 3
 Period (years) (1 - 30): 30
-Mortgage: $472.81
+Mortgage: $421.6
 ```
 
 Formula: M = P [ i (1 + i)^n ] / [ (1 + i)^n – 1]

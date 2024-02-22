@@ -18,7 +18,7 @@ try {
 ```bash
 try {
     // Code that might throw a checked exception
-} catch (IOExceptionArithmeticException e) {
+} catch (ArithmeticException e) {
     // Handle the ArithmeticException
 }
 ```

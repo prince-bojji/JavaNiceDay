@@ -16,16 +16,13 @@ public class Solution {
             int num2 = (i < l2.size()) ? l2.get(i) : 0;
 
             int sum = num1 + num2 + carry;
-
             int num = sum % 10;
             carry = sum / 10;
 
             // Add the sum to the result list
             result.add(num);
-
             i++;
         }
-
         return result;
     }
 }

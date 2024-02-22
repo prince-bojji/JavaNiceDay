@@ -2,30 +2,39 @@ package week1.exercises.submission.exercise4.jehan;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // First List
+        Scanner scanner = new Scanner(System.in);
+        // First Lists
         List<Integer> l1 = new LinkedList<>();
-        l1.add(2);
-        l1.add(4);
-        l1.add(3);
+        System.out.print("Enter length of l1 : ");
+        int l1Length = scanner.nextInt();
+        System.out.println("Enter " + l1Length + " lists of integers : ");
+        for(int i = 0; i < l1Length; i++){
+            l1.add(scanner.nextInt());
+        }
 
-        // Second List
+        // Second Lists
         List<Integer> l2 = new LinkedList<>();
-        l2.add(5);
-        l2.add(6);
-        l2.add(4);
+        System.out.print("\nEnter length of l2 : ");
+        int l2Length = scanner.nextInt();
+        System.out.println("Enter " + l2Length + " lists of integers : ");
+        for(int i = 0; i < l2Length; i++){
+            l2.add(scanner.nextInt());
+        }
 
         Solution solution = new Solution();
         List<Integer> result = solution.addTwoNumbers(l1, l2);
 
-        System.out.println("Sum of two numbers:");
+        System.out.println("\nSum of two numbers:");
         for (int i = 0; i < result.size(); i++) {
             System.out.print(result.get(i));
             if (i < result.size() - 1) {
                 System.out.print(" -> ");
             }
         }
+        scanner.close();
     }
 }

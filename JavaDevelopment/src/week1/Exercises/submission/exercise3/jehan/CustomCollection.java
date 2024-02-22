@@ -6,8 +6,8 @@ public class CustomCollection<E> {
 
     @SuppressWarnings("unchecked")
     public CustomCollection(int length) {
-		elements = (E[]) new Object[length];
-	}
+    	elements = (E[]) new Object[length];
+    }
 
     public void add(E element){
         //  if collection is full
@@ -38,11 +38,11 @@ public class CustomCollection<E> {
     public void remove(int index){
         // validate the index
         if(index < 0 || index >= count) 
-			throw new IllegalArgumentException();
+		throw new IllegalArgumentException();
 
         //  shift the elements to the left to fill the hole
-		for(int i = index; i < count; i++) 
-            elements[i] =  elements[i + 1];
+	for(int i = index; i < count; i++) 
+        	elements[i] =  elements[i + 1];
         
         count--;
     }

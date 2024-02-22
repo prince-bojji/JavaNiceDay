@@ -11,7 +11,7 @@ public class Main {
         List<Integer> l1 = new LinkedList<>();
         System.out.print("Enter length of l1 : ");
         int l1Length = scanner.nextInt();
-        System.out.println("Enter " + l1Length + " lists of integers : ");
+        System.out.println("Enter lists of " + l1Length + " integers : ");
         for(int i = 0; i < l1Length; i++){
             l1.add(scanner.nextInt());
         }
@@ -20,7 +20,7 @@ public class Main {
         List<Integer> l2 = new LinkedList<>();
         System.out.print("\nEnter length of l2 : ");
         int l2Length = scanner.nextInt();
-        System.out.println("Enter " + l2Length + " lists of integers : ");
+        System.out.println("Enter lists of " + l2Length + " integers : ");
         for(int i = 0; i < l2Length; i++){
             l2.add(scanner.nextInt());
         }

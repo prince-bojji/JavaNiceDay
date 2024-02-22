@@ -18,8 +18,8 @@ try {
 ```bash
 try {
     // Code that might throw a checked exception
-} catch (IOException e) {
-    // Handle the IOException
+} catch (ArithmeticException e) {
+    // Handle the ArithmeticException
 }
 ```
 [Sample Unchecked Exceptions Implementation](https://github.com/prince-bojji/JavaNiceDay/tree/main/JavaDevelopment/src/week1/Exceptions/UncheckedExceptions.java)

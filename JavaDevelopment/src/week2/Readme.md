@@ -9,7 +9,7 @@ Week 2 focuses on delving into the fundamentals of the Spring Framework. We will
 ### How to create a Maven project in VS Code
 
 ```bash
-https://drive.google.com/file/d/1FbkhSpip1qzFat9SUh_OUXl_v0hel86r/view?usp=drive_link
+https://drive.google.com/file/d/1v3eRjWp14o2fvUvcxIVqotMWLOAs2AYx/view?usp=drivesdk
 ```
 
 ### Explore the basics of Spring framework

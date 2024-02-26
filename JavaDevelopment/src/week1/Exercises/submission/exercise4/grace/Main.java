@@ -1,4 +1,4 @@
-package week1.Exercises.submission.exercise4.grace;
+package week1.exercises.submission.exercise4.grace;
 
 import java.util.Collections;
 import java.util.LinkedList;

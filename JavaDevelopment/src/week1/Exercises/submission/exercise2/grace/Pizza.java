@@ -1,4 +1,4 @@
-package week1.Exercises.submission.exercise2.grace;
+package week1.exercises.submission.exercise2.grace;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package week1.Exercises.submission.exercise1.grace;
+package week1.exercises.submission.exercise1.grace;
 
 import java.util.Scanner;
 import java.text.DecimalFormat;

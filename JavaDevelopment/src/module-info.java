@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Jehan Batang, Grace Alboladura
+ * @author Jehan Batang
  *
  */
 module JavaDevelopment {

@@ -1,4 +1,4 @@
-package week1.Exercises.submission.exercise5.grace;
+package week1.exercises.submission.exercise5.grace;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

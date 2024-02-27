@@ -1,4 +1,4 @@
-package week1.Exercises.submission.exercise3.grace;
+package week1.exercises.submission.exercise3.grace;
 
 /**
  * Generics

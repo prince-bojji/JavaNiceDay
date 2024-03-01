@@ -2,15 +2,15 @@
 
 ## Spring Boot
 
-___Spring Boot___ is an opinionated, easy to get-started addition to the Spring platform – highly useful for creating stand-alone, production-grade applications with minimum effort.
+**_Spring Boot_** is an opinionated, easy to get-started addition to the Spring platform – highly useful for creating stand-alone, production-grade applications with minimum effort.
 
 ## Spring & Spring Boot Annotations
 
 ### @Component Annotation
 
-The ___@Component___ annotation indicates that an annotated class is a "component". Such classes are considered candidates for auto-detection when using annotation-based configuration and classpath scanning.
- 
-In short, ___@Component___ is a class-level annotation. During the component scan, Spring Framework automatically detects classes annotated with @Component annotation and creates Spring beans for those classes.
+The **_@Component_** annotation indicates that an annotated class is a "component". Such classes are considered candidates for auto-detection when using annotation-based configuration and classpath scanning.
+
+In short, **_@Component_** is a class-level annotation. During the component scan, Spring Framework automatically detects classes annotated with @Component annotation and creates Spring beans for those classes.
 
 ### Example
 
@@ -53,3 +53,67 @@ class ComponentDemo {
 }
 ```
 
+### Autowired Annotation
+
+The **_@Autowired_** annotation is used to inject the bean automatically.
+
+The **_@Autowired_** annotation is used in Constructor injection, Setter injection, and Field injection.
+
+### Example
+
+```bash
+package net.javaguides.springboot.controller;
+
+import net.javaguides.springboot.service.Pizza;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class PizzaController {
+
+    //Field injection
+    @Autowired
+    @Qualifier("vegPizza")
+    private Pizza pizza;
+
+//    @Autowired
+//    public PizzaController(@Qualifier("vegPizza") Pizza pizza) {
+//        System.out.println("inside PizzaController constructor");
+//        this.pizza = pizza;
+//    }
+
+//    // setter injection
+//    @Autowired
+//    @Qualifier("vegPizza")
+//    public void setPizza(Pizza pizza) {
+//        this.pizza = pizza;
+//    }
+
+    public String getPizza(){
+        return pizza.getPizza();
+    }
+}
+```
+
+```bash
+package net.javaguides.springboot;
+
+import net.javaguides.springboot.controller.PizzaController;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.Arrays;
+
+@SpringBootApplication
+public class SpringbootDockerDemoApplication {
+
+	public static void main(String[] args) {
+		var context = SpringApplication.run(SpringbootDockerDemoApplication.class, args);
+		System.out.println("calling pizzaController.getPizza()");
+		PizzaController pizzaController = context.getBean(PizzaController.class);
+		String message = pizzaController.getPizza();
+		System.out.println(message);
+	}
+}
+```

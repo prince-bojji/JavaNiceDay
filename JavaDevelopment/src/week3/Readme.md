@@ -117,3 +117,109 @@ public class SpringbootDockerDemoApplication {
 	}
 }
 ```
+
+### @Qualifier Annotation
+
+The **_@Qualifier_** annotation is used in conjunction with **_@Autowired_** to avoid confusion when we have two or more beans configured for the same type.
+
+If there are multiple implementations for a single interface then we can use **_@Qualifier_** to choose the required implementation at runtime.
+
+### Example
+
+```bash
+public interface MessageService {
+    public void sendMsg(String message);
+}
+```
+
+```bash
+public class EmailService implements MessageService{
+
+    public void sendMsg(String message) {
+         System.out.println(message);
+    }
+}
+```
+
+```bash
+public class TwitterService implements MessageService{
+
+    public void sendMsg(String message) {
+        System.out.println(message);
+    }
+}
+```
+
+```bash
+public class SMSService implements MessageService{
+
+    public void sendMsg(String message) {
+         System.out.println(message);
+    }
+}
+```
+
+```bash
+public interface MessageProcessor {
+    public void processMsg(String message);
+}
+
+public class MessageProcessorImpl implements MessageProcessor {
+
+    private MessageService messageService;
+
+    // setter based DI
+    @Autowired
+    @Qualifier("twitterService")
+    public void setMessageService(MessageService messageService) {
+        this.messageService = messageService;
+    }
+
+    // constructor based DI
+    @Autowired
+    public MessageProcessorImpl(@Qualifier("twitterService") MessageService messageService) {
+        this.messageService = messageService;
+    }
+
+    public void processMsg(String message) {
+        messageService.sendMsg(message);
+    }
+}
+```
+
+```bash
+@Configuration
+@ComponentScan("com.javadevsguide.springframework.di")
+public class AppConfiguration {
+
+    @Bean(name="emailService")
+    public MessageService emailService(){
+         return new EmailService();
+    }
+
+    @Bean(name="twitterService")
+    public MessageService twitterService(){
+        return new TwitterService();
+    }
+
+    @Bean(name="smsService")
+    public MessageService smsService(){
+        return new SMSService();
+    }
+
+    @Bean
+    public MessageProcessor messageProcessor(){
+        return new MessageProcessorImpl(twitterService());
+    }
+}
+```
+
+```bash
+public class TestApplication {
+    public static void main(String[] args) {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
+        MessageProcessor processor = applicationContext.getBean(MessageProcessor.class);
+        processor.processMsg("twitter message sending ");
+    }
+}
+```

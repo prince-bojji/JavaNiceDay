@@ -223,3 +223,178 @@ public class TestApplication {
     }
 }
 ```
+
+### Primary Annotation
+
+We use **_@Primary_** annotation to give higher preference to a bean when there are multiple beans of the same type.
+
+### Bean Annotation
+
+**_@Bean_** annotation indicates that a method produces a bean to be managed by the Spring container. The @Bean annotation is usually declared in the Configuration class to create Spring Bean definitions.
+
+### Example
+
+### Declaring a Bean
+
+```bash
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.companyname.projectname.customer.CustomerService;
+import com.companyname.projectname.order.OrderService;
+
+@Configuration
+public class Application {
+
+    @Bean
+    public CustomerService customerService() {
+        return new CustomerService();
+    }
+
+    @Bean
+    public OrderService orderService() {
+       return new OrderService();
+    }
+}
+```
+
+### Injecting Bean Dependencies
+
+```bash
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.companyname.projectname.customer.CustomerController;
+import com.companyname.projectname.customer.CustomerService;
+
+@Configuration
+public class Application {
+
+    private CustomerService customerService;
+    @Bean
+    public CustomerService customerService() {
+        customerService = new CustomerService();
+        return customerService;
+    }
+
+    @Bean
+    public CustomerController customerController(CustomerService customerService) {
+        return new CustomerController(customerService);
+    }
+}
+```
+
+### Bean life cycle methods
+
+@Bean annotation provides initMethod and destroyMethod attributes to perform certain actions after bean initialization or before bean destruction by a container.
+
+```bash
+public class Foo {
+        public void init() {
+                // initialization logic via xml config
+        }
+}
+
+public class Bar {
+        public void cleanup() {
+                // destruction logic via xml config
+        }
+}
+
+@Configuration
+public class AppConfig {
+
+        @Bean(initMethod = "init")
+        public Foo foo() {
+                return new Foo();
+        }
+
+        @Bean(destroyMethod = "cleanup")
+        public Bar bar() {
+                return new Bar();
+        }
+
+}
+```
+
+### Specifying Bean Scope Using the @Scope Annotation
+
+```bash
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+
+import com.companyname.projectname.customer.CustomerService;
+import com.companyname.projectname.order.OrderService;
+
+@Configuration
+public class Application {
+
+    @Bean
+    @Scope("prototype")
+    public CustomerService customerService() {
+        return new CustomerService();
+    }
+
+    @Bean
+    @Scope("prototype")
+    public OrderService orderService() {
+        return new OrderService();
+    }
+}
+```
+
+### Customizing Bean Naming
+
+```bash
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.companyname.projectname.customer.CustomerService;
+import com.companyname.projectname.order.OrderService;
+
+@Configuration
+public class Application {
+
+    @Bean(name = "cService")
+    public CustomerService customerService() {
+        return new CustomerService();
+    }
+
+    @Bean(name = "oService")
+    public OrderService orderService() {
+        return new OrderService();
+    }
+}
+```
+
+### Bean Aliasing
+
+```bash
+@Configuration
+public class AppConfig {
+
+        @Bean(name = { "dataSource", "subsystemA-dataSource", "subsystemB-dataSource" })
+        public DataSource dataSource() {
+                // instantiate, configure and return DataSource bean...
+        }
+
+}
+```
+
+### Injecting inter-bean dependencies
+
+```bash
+@Configuration
+public class AppConfig {
+        @Bean
+        public Foo foo() {
+                return new Foo(bar());
+        }
+
+        @Bean
+        public Bar bar() {
+                return new Bar();
+        }
+}
+```

@@ -4,6 +4,7 @@
 
 **_Spring Boot_** is an opinionated, easy to get-started addition to the Spring platform – highly useful for creating stand-alone, production-grade applications with minimum effort.
 
+
 ## Spring & Spring Boot Annotations
 
 ### @Component Annotation
@@ -52,6 +53,7 @@ class ComponentDemo {
     }
 }
 ```
+
 
 ### Autowired Annotation
 
@@ -117,6 +119,7 @@ public class SpringbootDockerDemoApplication {
 	}
 }
 ```
+
 
 ### @Qualifier Annotation
 
@@ -223,6 +226,7 @@ public class TestApplication {
     }
 }
 ```
+
 
 ### Primary Annotation
 
@@ -399,6 +403,7 @@ public class AppConfig {
 }
 ```
 
+
 ### Stereotype Annotations
 
 Spring Stereotype annotations are used to create Spring beans automatically in the application context (Spring IoC container).
@@ -461,6 +466,7 @@ public class UserController {
       // Build REST APIs
 }
 ```
+
 
 ### @Lazy Annotation
 
@@ -536,7 +542,7 @@ public class Application {
         context.close();
     }
 }
-````
+```
 
 ```bash
 // Output
@@ -544,6 +550,7 @@ Inside SecondBean Constuctor
 Inside FirstBean Constuctor
 Method of FirstBean Class
 ```
+
 
 ### @Scope Annotation
 
@@ -717,6 +724,7 @@ TwitterMessageService Implementation
 null
 ```
 
+
 ### @Value Annotation
 
 Spring **_@Value_** annotation is used to assign default values to variables and method arguments.
@@ -820,6 +828,7 @@ password
 javaguides@gmail.com
 /Users/rameshfadatare
 ```
+
 
 ### @PropertySource Annotation
 

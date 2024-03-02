@@ -506,7 +506,7 @@ public class SecondBean {
 }
 ```
 
-````bash
+```bash
 package net.javaguides.spring.lazy;
 
 import org.springframework.context.annotation.Bean;

@@ -4,7 +4,6 @@
 
 **_Spring Boot_** is an opinionated, easy to get-started addition to the Spring platform – highly useful for creating stand-alone, production-grade applications with minimum effort.
 
-
 ## Spring & Spring Boot Annotations
 
 ### @Component Annotation
@@ -53,7 +52,6 @@ class ComponentDemo {
     }
 }
 ```
-
 
 ### Autowired Annotation
 
@@ -119,7 +117,6 @@ public class SpringbootDockerDemoApplication {
 	}
 }
 ```
-
 
 ### @Qualifier Annotation
 
@@ -226,7 +223,6 @@ public class TestApplication {
     }
 }
 ```
-
 
 ### Primary Annotation
 
@@ -403,7 +399,6 @@ public class AppConfig {
 }
 ```
 
-
 ### Stereotype Annotations
 
 Spring Stereotype annotations are used to create Spring beans automatically in the application context (Spring IoC container).
@@ -466,7 +461,6 @@ public class UserController {
       // Build REST APIs
 }
 ```
-
 
 ### @Lazy Annotation
 
@@ -550,7 +544,6 @@ Inside SecondBean Constuctor
 Inside FirstBean Constuctor
 Method of FirstBean Class
 ```
-
 
 ### @Scope Annotation
 
@@ -724,7 +717,6 @@ TwitterMessageService Implementation
 null
 ```
 
-
 ### @Value Annotation
 
 Spring **_@Value_** annotation is used to assign default values to variables and method arguments.
@@ -829,7 +821,6 @@ javaguides@gmail.com
 /Users/rameshfadatare
 ```
 
-
 ### @PropertySource Annotation
 
 In Spring, you can use **_@PropertySource_** annotation to externalize your configuration to a properties file. In this article, we will discuss how to use **_@PropertySource_** to read a properties file and display the values with **_@Value_** and **_Environment_**.
@@ -923,14 +914,14 @@ Allow **_@PropertySource_** to ignore the not found properties file.
  }
 ```
 
-If ___missing.properties___ is not found, the system is unable to start and throws ___FileNotFoundException___
+If **_missing.properties_** is not found, the system is unable to start and throws **_FileNotFoundException_**
 
 ```bash
- Caused by: java.io.FileNotFoundException: 
+ Caused by: java.io.FileNotFoundException:
   classpath resource [missiong.properties] cannot be opened because it does not exist
 ```
 
-In Spring 4, you can use ___ignoreResourceNotFound___ to ignore the not found properties file
+In Spring 4, you can use **_ignoreResourceNotFound_** to ignore the not found properties file
 
 ```bash
  @Configuration
@@ -944,3 +935,138 @@ In Spring 4, you can use ___ignoreResourceNotFound___ to ignore the not found pr
   @PropertySource("classpath:config.properties")
         })
 ```
+
+### @Controller and @RestController Annotations
+
+The first annotation is used for traditional Spring controllers and has been part of the framework for a very long time. The **_@RestController_** annotation was introduced in Spring 4.0 to simplify the creation of RESTful web services. It’s a convenience annotation that combines **_@Controller_** and **_@ResponseBody_** – which eliminates the need to annotate every request handling method of the controller class with the **_@ResponseBody_** annotation.
+
+The key difference between a traditional Spring MVC controller and the RESTful web service controller is the way the HTTP response body is created. While the traditional MVC controller relies on the View technology, the RESTful web service controller simply returns the object, and the object data is written directly to the HTTP response as JSON/XML.
+
+### @Controller Annotation
+
+Classic controllers can be annotated with the **_@Controller_** annotation. This is simply a specialization of the **_@Component_** class and allows implementation classes to be autodetected through classpath scanning.
+
+### @Controller Annotation Example
+
+**_@Controller_** is typically used in combination with a **_@RequestMapping_** annotation used on request handling methods.
+
+```bash
+@Controller
+@RequestMapping("/api/v1")
+public class EmployeeController {
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @GetMapping("/employees")
+    public @ResponseBody List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
+    }
+
+    @GetMapping("/employees/{id}")
+    public @ResponseBody ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+        throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+          .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+        return ResponseEntity.ok().body(employee);
+    }
+
+    @PostMapping("/employees")
+    public @ResponseBody Employee createEmployee(@Valid @RequestBody Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    @PutMapping("/employees/{id}")
+    public @ResponseBody ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
+         @Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+        .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+        employee.setEmailId(employeeDetails.getEmailId());
+        employee.setLastName(employeeDetails.getLastName());
+        employee.setFirstName(employeeDetails.getFirstName());
+        final Employee updatedEmployee = employeeRepository.save(employee);
+        return ResponseEntity.ok(updatedEmployee);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public @ResponseBody Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId)
+         throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+       .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+        employeeRepository.delete(employee);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
+    }
+}
+```
+
+### @RestController Annotation
+
+Spring 4.0 introduced **_@RestController_**, a specialized version of the controller which is a convenience annotation that does nothing more than add the **_@Controller_** and **_@ResponseBody_** annotations.
+
+By annotating the controller class with **_@RestController_** annotation, you no longer need to add **_@ResponseBody_** to all the request mapping methods. The **_@ResponseBody_** annotation is active by default.
+
+### @RestController Annotation Example
+
+To use **_@RestController_** in our example, all we need to do is modify the **_@Controller_** to **_@RestController_** and remove the @ResponseBody from each method. The resultant class should look like the following
+
+```bash
+@RestController
+@RequestMapping("/api/v1")
+public class EmployeeController {
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @GetMapping("/employees")
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
+    }
+
+    @GetMapping("/employees/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+        throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+          .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+        return ResponseEntity.ok().body(employee);
+    }
+
+    @PostMapping("/employees")
+    public Employee createEmployee(@Valid @RequestBody Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    @PutMapping("/employees/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
+         @Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+        .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+        employee.setEmailId(employeeDetails.getEmailId());
+        employee.setLastName(employeeDetails.getLastName());
+        employee.setFirstName(employeeDetails.getFirstName());
+        final Employee updatedEmployee = employeeRepository.save(employee);
+        return ResponseEntity.ok(updatedEmployee);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId)
+         throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+       .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+        employeeRepository.delete(employee);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
+    }
+}
+```
+
+### @RequestMapping Annotation
+
+___@RequestMapping___ annotation for mapping web requests onto methods in request-handling classes with flexible method signatures.
+
+
+...

@@ -500,7 +500,7 @@ public class SecondBean {
 }
 ```
 
-````bash
+```bash
 package net.javaguides.spring.lazy;
 
 import org.springframework.context.annotation.Bean;
@@ -536,7 +536,7 @@ public class Application {
         context.close();
     }
 }
-````
+```
 
 ```bash
 // Output
@@ -914,14 +914,14 @@ Allow **_@PropertySource_** to ignore the not found properties file.
  }
 ```
 
-If ___missing.properties___ is not found, the system is unable to start and throws ___FileNotFoundException___
+If **_missing.properties_** is not found, the system is unable to start and throws **_FileNotFoundException_**
 
 ```bash
- Caused by: java.io.FileNotFoundException: 
+ Caused by: java.io.FileNotFoundException:
   classpath resource [missiong.properties] cannot be opened because it does not exist
 ```
 
-In Spring 4, you can use ___ignoreResourceNotFound___ to ignore the not found properties file
+In Spring 4, you can use **_ignoreResourceNotFound_** to ignore the not found properties file
 
 ```bash
  @Configuration
@@ -935,3 +935,390 @@ In Spring 4, you can use ___ignoreResourceNotFound___ to ignore the not found pr
   @PropertySource("classpath:config.properties")
         })
 ```
+
+### @Controller and @RestController Annotations
+
+The first annotation is used for traditional Spring controllers and has been part of the framework for a very long time. The **_@RestController_** annotation was introduced in Spring 4.0 to simplify the creation of RESTful web services. It’s a convenience annotation that combines **_@Controller_** and **_@ResponseBody_** – which eliminates the need to annotate every request handling method of the controller class with the **_@ResponseBody_** annotation.
+
+The key difference between a traditional Spring MVC controller and the RESTful web service controller is the way the HTTP response body is created. While the traditional MVC controller relies on the View technology, the RESTful web service controller simply returns the object, and the object data is written directly to the HTTP response as JSON/XML.
+
+### @Controller Annotation
+
+Classic controllers can be annotated with the **_@Controller_** annotation. This is simply a specialization of the **_@Component_** class and allows implementation classes to be autodetected through classpath scanning.
+
+### @Controller Annotation Example
+
+**_@Controller_** is typically used in combination with a **_@RequestMapping_** annotation used on request handling methods.
+
+```bash
+@Controller
+@RequestMapping("/api/v1")
+public class EmployeeController {
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @GetMapping("/employees")
+    public @ResponseBody List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
+    }
+
+    @GetMapping("/employees/{id}")
+    public @ResponseBody ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+        throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+          .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+        return ResponseEntity.ok().body(employee);
+    }
+
+    @PostMapping("/employees")
+    public @ResponseBody Employee createEmployee(@Valid @RequestBody Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    @PutMapping("/employees/{id}")
+    public @ResponseBody ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
+         @Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+        .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+        employee.setEmailId(employeeDetails.getEmailId());
+        employee.setLastName(employeeDetails.getLastName());
+        employee.setFirstName(employeeDetails.getFirstName());
+        final Employee updatedEmployee = employeeRepository.save(employee);
+        return ResponseEntity.ok(updatedEmployee);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public @ResponseBody Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId)
+         throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+       .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+        employeeRepository.delete(employee);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
+    }
+}
+```
+
+### @RestController Annotation
+
+Spring 4.0 introduced **_@RestController_**, a specialized version of the controller which is a convenience annotation that does nothing more than add the **_@Controller_** and **_@ResponseBody_** annotations.
+
+By annotating the controller class with **_@RestController_** annotation, you no longer need to add **_@ResponseBody_** to all the request mapping methods. The **_@ResponseBody_** annotation is active by default.
+
+### @RestController Annotation Example
+
+To use **_@RestController_** in our example, all we need to do is modify the **_@Controller_** to **_@RestController_** and remove the @ResponseBody from each method. The resultant class should look like the following
+
+```bash
+@RestController
+@RequestMapping("/api/v1")
+public class EmployeeController {
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @GetMapping("/employees")
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
+    }
+
+    @GetMapping("/employees/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+        throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+          .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+        return ResponseEntity.ok().body(employee);
+    }
+
+    @PostMapping("/employees")
+    public Employee createEmployee(@Valid @RequestBody Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    @PutMapping("/employees/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
+         @Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+        .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+        employee.setEmailId(employeeDetails.getEmailId());
+        employee.setLastName(employeeDetails.getLastName());
+        employee.setFirstName(employeeDetails.getFirstName());
+        final Employee updatedEmployee = employeeRepository.save(employee);
+        return ResponseEntity.ok(updatedEmployee);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId)
+         throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+       .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+        employeeRepository.delete(employee);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
+    }
+}
+```
+
+### @RequestMapping Annotation
+
+**_@RequestMapping_** annotation for mapping web requests onto methods in request-handling classes with flexible method signatures.
+
+Spring currently supports five types of inbuilt annotations for handling different types of incoming HTTP request methods which are GET, POST, PUT, DELETE, and PATCH. These annotations are:
+
+1. **_@GetMapping_** - shortcut for @RequestMapping(method = RequestMethod.GET)
+2. **_@PostMapping_** - shortcut for @RequestMapping(method = RequestMethod.POST)
+3. **_@PutMapping_** - shortcut for @RequestMapping(method = RequestMethod.PUT)
+4. **_@DeleteMapping_** - shortcut for @RequestMapping(method =RequestMethod.DELETE)
+5. **_@PatchMapping_** - shortcut for @RequestMapping(method = RequestMethod.PATCH)
+
+### @GetMapping
+
+The **_GET HTTP_** request is used to get single or multiple resources and **_@GetMapping_** annotation for mapping HTTP GET requests onto specific handler methods.
+
+### Example
+
+```bash
+@GetMapping("/employees")
+public List<Employee> getAllEmployees() {
+    return employeeRepository.findAll();
+}
+
+@GetMapping("/employees/{id}")
+public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+ throws ResourceNotFoundException {
+    Employee employee = employeeRepository.findById(employeeId)
+      .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+    return ResponseEntity.ok().body(employee);
+}
+```
+
+### @PostMapping
+
+The **_POST HTTP_** method is used to create a resource and **_@PostMapping_** annotation for mapping HTTP POST requests onto specific handler methods.
+
+### Examples
+
+```bash
+@PostMapping("/employees")
+public Employee createEmployee(@Valid @RequestBody Employee employee) {
+    return employeeRepository.save(employee);
+}
+```
+
+### @PutMapping
+
+The **_PUT HTTP_** method is used to update the resource and **_@PutMapping_** annotation for mapping HTTP PUT requests onto specific handler methods.
+
+### Example
+
+```bash
+@PutMapping("/employees/{id}")
+public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
+  @Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
+    Employee employee = employeeRepository.findById(employeeId)
+    .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+    employee.setEmailId(employeeDetails.getEmailId());
+    employee.setLastName(employeeDetails.getLastName());
+    employee.setFirstName(employeeDetails.getFirstName());
+    final Employee updatedEmployee = employeeRepository.save(employee);
+    return ResponseEntity.ok(updatedEmployee);
+}
+```
+
+### @DeleteMapping
+
+The **_DELETE HTTP method_** is used to delete the resource and **_@DeleteMapping_** annotation for mapping HTTP DELETE requests onto specific handler methods.
+
+### Example
+
+```bash
+@DeleteMapping("/employees/{id}")
+public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId)
+  throws ResourceNotFoundException {
+    Employee employee = employeeRepository.findById(employeeId)
+      .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+    employeeRepository.delete(employee);
+    Map<String, Boolean> response = new HashMap<>();
+    response.put("deleted", Boolean.TRUE);
+    return response;
+}
+```
+
+### @PatchMapping
+
+The **_PATCH HTTP method_** is used when you want to apply a partial update to the resource and **_@PatchMapping_** annotation for mapping HTTP PATCH requests onto specific handler methods.
+
+### Example
+
+```bash
+@PatchMapping("/employees/{id}/{firstName}")
+public ResponseEntity<Employee> updateEmployeePartially(@PathVariable Long id, @PathVariable String firstName) {
+	try {
+		Employee employee = employeeRepository.findById(id).get();
+		employee.setFirstName(firstName);
+		return new ResponseEntity<Employee>(employeeRepository.save(employee), HttpStatus.OK);
+	} catch (Exception e) {
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+}
+```
+
+### Complete Example - EmployeeController.java
+
+```bash
+@RestController
+@RequestMapping("/api/v1")
+public class EmployeeController {
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @GetMapping("/employees")
+    public List<Employee> getAllEmployees() {
+        return employeeRepository.findAll();
+    }
+
+    @GetMapping("/employees/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
+        throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+          .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+        return ResponseEntity.ok().body(employee);
+    }
+
+    @PostMapping("/employees")
+    public Employee createEmployee(@Valid @RequestBody Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    @PutMapping("/employees/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
+         @Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+        .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+        employee.setEmailId(employeeDetails.getEmailId());
+        employee.setLastName(employeeDetails.getLastName());
+        employee.setFirstName(employeeDetails.getFirstName());
+        final Employee updatedEmployee = employeeRepository.save(employee);
+        return ResponseEntity.ok(updatedEmployee);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId)
+         throws ResourceNotFoundException {
+        Employee employee = employeeRepository.findById(employeeId)
+       .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+
+        employeeRepository.delete(employee);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
+    }
+
+    @PatchMapping("/employees/{id}/{firstName}")
+    public ResponseEntity<Employee> updateEmployeePartially(@PathVariable Long id, @PathVariable String firstName) {
+	try {
+		Employee employee = employeeRepository.findById(id).get();
+		employee.setFirstName(firstName);
+		return new ResponseEntity<Employee>(employeeRepository.save(employee), HttpStatus.OK);
+	} catch (Exception e) {
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+    }
+}
+```
+
+### @PathVariable Annotation
+
+**_@PathVariable_** is a Spring annotation which indicates that a method parameter should be bound to a URI template variable.
+
+It has the following optional elements:
+
+**_name_** - name of the path variable to bind to
+**_required_** - tells whether the path variable is required
+**_value_** - alias for name
+
+With the **_@PathVariable_** annotation, we bind the request URL template path variable to the method variable. For instance, with the **_/100/Ramesh/_** URL, the **_100_** value is bind to the **_id_** variable and "**_Ramesh_**" value to the **_name_** variable.
+
+```bash
+    @GetMapping(path = "/hello-world/{id}/{name}")
+    public HelloWorldBean helloWorldPathVariable(@PathVariable long id,
+        @PathVariable(name = "name") String name) {
+        return new HelloWorldBean(id, name);
+    }
+```
+
+### @RequestParam Annotation
+
+We can used `@RequestParam` to extract query parameters from the request.
+
+### Example
+
+```bash
+// build rest API to handle query paramaters.
+// http://localhost:8080/student/query?firstName=Ramesh&lastName=Fadatare
+@GetMapping("/student/query")
+public Student studentQueryParam(
+    @RequestParam(name = "firstName")  String firstName,
+    @RequestParam(name = "lastName") String lastName) {
+        return new Student(firstName, lastName);
+    }
+```
+
+### @SpringBootApplication Annotation
+
+**_@SpringBootApplication_** annotation indicates a configuration class that declares one or more **_@Bean_** methods and also triggers auto-configuration and component scanning.
+
+This **_@SpringBootApplication_** annotation is a convenience annotation that is equivalent to declaring **_@Configuration_**, **_@EnableAutoConfiguration_**, and **_@ComponentScan_**.
+
+### @SpringBootApplication Annotation Example
+
+We use this annotation to mark the main class of a Spring Boot application:
+
+```bash
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
+
+Spring Boot @SpringBootApplication annotation is used to mark a configuration class that declares one or more @Bean methods and also triggers auto-configuration and component scanning.
+
+The @SpringBootApplication annotation is a combination of the following three Spring annotations:
+
+@SpringBootApplication = @Configuration + @EnableAutoConfiguration + @ComponentScan
+
+### @Configuration
+
+This annotation indicates that a configuration class declares one or more @Bean methods. These classes are processed by the Spring container to generate bean definitions and service requests for those beans at runtime.
+
+### @ComponentScan
+
+This annotation is used to specify the base packages to scan for spring beans/components.
+
+### @EnableAutoConfiguration
+
+This annotation enables the magical auto-configuration feature of Spring Boot, which can automatically configure a lot of stuff for you.
+
+### SpringBootApplication Annotation Optional Elements
+
+The following are the parameters accepted in the @SpringBootApplication annotation:
+
+- **_Class<?>[] exclude_** - Exclude specific auto-configuration classes such that they will never be applied.
+- **_String[] excludeName_** - Exclude specific auto-configuration class names such that they will never be applied.
+- **_Class<?>[] scanBasePackageClass_** - A type-safe alternative to scanBasePackages() for specifying the packages to scan for annotated components.
+- **_String[] scanBasePackages_** - Base packages to scan for annotated components.
+
+
